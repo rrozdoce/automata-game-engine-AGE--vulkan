@@ -92,6 +92,8 @@ VulkanApp_EXTERNAL_OBJECTS =
 
 VulkanApp: CMakeFiles/VulkanApp.dir/main.cpp.o
 VulkanApp: CMakeFiles/VulkanApp.dir/build.make
+VulkanApp: /usr/lib/x86_64-linux-gnu/libvulkan.so
+VulkanApp: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
 VulkanApp: CMakeFiles/VulkanApp.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/felipe/github/automata-game-engine-AGE--vulkan/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable VulkanApp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/VulkanApp.dir/link.txt --verbose=$(VERBOSE)

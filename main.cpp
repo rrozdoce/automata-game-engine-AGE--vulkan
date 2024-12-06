@@ -1,29 +1,30 @@
-#include <vulkan/vulkan.h>
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+#define GLM_FORCE_RADIANS
+#define GLM_FORCE_DEPTH_Z ERO_TO_ONE
+#include <glm/glm.hpp>
+#include <glm/mat4x4.hpp>
+
 #include <iostream>
 
 int main()
+
 {
-    VkInstance instance;
-    VkApplicationInfo appInfo = {};
-    appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-    appInfo.pApplicationName = "Vulkan Example";
-    appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
-    appInfo.pEngineName = "No Engine";
-    appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
-    appInfo.apiVersion = VK_API_VERSION_1_3;
+    glfwInit();
 
-    VkInstanceCreateInfo createInfo = {};
-    createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-    createInfo.pApplicationInfo = &appInfo;
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+    GLFWwindow *window = glfwCreateWindow(800, 600, "Test Window", nullptr, nullptr);
 
-    if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS)
+    uint32_t extensionCount = 0;
+    vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
+
+    printf("Extension count: %i\n", extensionCount);
+
+    while (!glfwWindowShouldClose(window))
     {
-        std::cerr << "failed to create Vulkan instance!" << std::endl;
-        return -1;
+        glfwPollEvents();
     }
 
-    std::cout << "Vulkan instance created successfully!" << std::endl;
-
-    vkDestroyInstance(instance, nullptr);
-    return 0;
+    glfwDestroyWindow(window);
 }

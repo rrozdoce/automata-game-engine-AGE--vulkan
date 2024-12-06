@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/VulkanApp.dir/main.cpp.o -o VulkanApp   -L/path/to/vulkan-sdk/lib  -Wl,-rpath,/path/to/vulkan-sdk/lib -lvulkan 
+/usr/bin/c++ CMakeFiles/VulkanApp.dir/main.cpp.o -o VulkanApp  /usr/lib/x86_64-linux-gnu/libvulkan.so /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 
