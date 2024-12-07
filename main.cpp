@@ -1,29 +1,23 @@
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
+#include "first_app.hpp"
 
-#define GLM_FORCE_RADIANS
-#define GLM_FORCE_DEPTH_Z ERO_TO_ONE
-#include <glm/glm.hpp>
-#include <glm/mat4x4.hpp>
-
+// std
+#include <cstdlib>
 #include <iostream>
+#include <stdexcept>
 
-int main()
-{
-    glfwInit();
 
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    GLFWwindow *window = glfwCreateWindow(800, 600, "Test Window", nullptr, nullptr);
+int main() {
+    lve::FirstApp app{};
 
-    uint32_t extensionCount = 0;
-    vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
-
-    printf("Extension count: %i\n", extensionCount);
-
-    while (!glfwWindowShouldClose(window))
+    try
     {
-        glfwPollEvents();
+        app.run();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        return EXIT_FAILURE;
     }
 
-    glfwDestroyWindow(window);
+    return EXIT_SUCCESS;
 }
